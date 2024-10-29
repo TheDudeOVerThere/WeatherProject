@@ -1,17 +1,16 @@
-const form = document.getElementById("test");
+const button = document.getElementById("submitButton");
 
-form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    getWeather();
-});
+button.addEventListener("click", getWeather);
 
 
 function getWeather() {
-    let latitude = document.getElementById("#lat");
-    let longitude = document.getElementById("#lon");
-    console.log("fdsa");
-    alert("boo");
+    const latitude = document.getElementById("lat").value;
+    const longitude = document.getElementById("lon").value;
+    console.log(typeof latitude);
     const url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=39e5d13ceac778eaf7fc4c93d4f097f5";
+
+    console.log(latitude);
+    console.log(longitude);
 
     fetch(url).then(response => response.json()).then(data => document.getElementById("report").textContent = JSON.stringify(data, undefined, 2));
 }

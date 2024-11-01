@@ -2,18 +2,40 @@
 
 <html>
     <head>
-        
+        <title>Weather</title>
     </head>
 
-    <form id="test">
-        latitude <input type="text" placeholder="latitude" id="lat" name="lat"><br>
-        longitude <input type="text" placeholder="longitude" id="lon" name="lon"><br>
-        <button type="button" id="submitButton">Submit</button>
-    </form>
+    <body>
+        <form id="test">
+            latitude <input type="text" placeholder="latitude" id="lat" name="lat"><br>
+            longitude <input type="text" placeholder="longitude" id="lon" name="lon"><br>
+            <button type="button" id="submitButton">Submit</button>
+        </form>
+    
+        <br>
+        <br>
 
-    <br>
-    <br>
-    <pre id="report"></pre>
+        <div>
+            <div id="map" style="height: 500px; width: 100%;"></div>
+            
+            <div id="reportNumbers" class="report" style="display: none;">
+                <h3>Numbers</h3>
+                <p id="reportLocation"></p>
+            </div>
+            <div id="reportWind" class="report" style="display: none;">
+                <h3>Wind direction</h3>
+                <img id="windArrow" src="imgs/windArrow.png" alt="wind arrow" width="80">
+            </div>
 
-    <script type="text/javascript" src="test.js"></script>
+            <br><br>
+            <pre id="api"></pre>
+        </div>
+    
+
+
+        <script type="text/javascript" src="test.js"></script>
+        <script async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCN0Uu45Bdk_Yn_DK1eWuowNuUTQ11dnrY&loading=async&callback=initMap&libraries=marker">
+        </script>
+    </body>
 </html>

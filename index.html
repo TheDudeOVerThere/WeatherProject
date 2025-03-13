@@ -3,28 +3,40 @@
 <html>
     <head>
         <title>Weather</title>
+        <link href="style.css" rel="stylesheet">
     </head>
 
-    <body>
-        <form id="test">
+    <body style="margin: 0%;">
+        <!-- <form id="test">
             latitude <input type="text" placeholder="latitude" id="lat" name="lat"><br>
             longitude <input type="text" placeholder="longitude" id="lon" name="lon"><br>
             <button type="button" id="submitButton">Submit</button>
-        </form>
-    
-        <br>
-        <br>
+        </form> -->
 
-        <div>
-            <div id="map" style="height: 500px; width: 100%;"></div>
-            
+        <div id="banner">
+            <h2 id="bannerTitle">Weather</h2>
+        </div>
+
+        <h1 id="currWFor">Current weather for: </h1>
+        <div id="map"></div>
+
+        <div id="report">
             <div id="reportNumbers" class="report" style="display: none;">
-                <h3>Numbers</h3>
-                <p id="reportLocation"></p>
+                <div id="reportLocationContainer">
+                    <h3>Location</h3>
+                    <p id="reportLocation"></p>
+                </div>
+
+                <h3>Temperature</h3>
+                <p id="maxTemp"></p>
+                <p id="currTemp"></p>
+                <p id="minTemp"></p>
             </div>
+
             <div id="reportWind" class="report" style="display: none;">
                 <h3>Wind direction</h3>
                 <img id="windArrow" src="imgs/windArrow.png" alt="wind arrow" width="80">
+                <p id="windSpeed"></p>
             </div>
 
             <br><br>

@@ -16,8 +16,18 @@ function presentData(data) {
 
     const windArrow = document.getElementById("windArrow");
     windArrow.style.transform = "rotate(" + data.wind.deg + "deg)";
+    const scaling = data.wind.speed * 15;
+    windArrow.style.height = "" + scaling + "px";
+    windArrow.style.width = "" + scaling + "px";
 
-    document.getElementById("reportLocation").textContent = data.name;
+    document.getElementById("currWFor").textContent = "Current weather for " + data.name;
+    document.getElementById("reportLocation").textContent = data.name + ", " + data.sys.country;
+    
+    document.getElementById("maxTemp").textContent = "Maximum temperature: " + Number( (data.main.temp_max - 273).toPrecision(3) ) + " degrees";
+    document.getElementById("currTemp").textContent = "Current temperature: " + Number( (data.main.temp - 273).toPrecision(3) ) + " degrees";
+    document.getElementById("minTemp").textContent = "Minumum temperature: " + Number( (data.main.temp_min - 273).toPrecision(3) ) + " degrees";
+
+    document.getElementById("windSpeed").textContent = "Wind Speed: " + Number( (data.wind.speed).toPrecision(3) ) + " m/s";
 
     document.getElementById("api").textContent = JSON.stringify(data, undefined, 2);
 }
@@ -26,8 +36,8 @@ async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
 
     const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 5,
-        center: { lat: -25.363, lng: 131.044},
+        zoom: 10,
+        center: { lat: -33.8679, lng: 151.2073},
         mapId: "positionMap",
     });
 
@@ -44,4 +54,8 @@ async function initMap() {
 
         fetch(url).then(response => response.json()).then(data => presentData(data));
     });
+
+    // Set starting point to Sydney
+    const url = "https://api.openweathermap.org/data/2.5/weather?lat=-33.8679&lon=151.2073&appid=39e5d13ceac778eaf7fc4c93d4f097f5";
+    fetch(url).then(response => response.json()).then(data => presentData(data));
 }
